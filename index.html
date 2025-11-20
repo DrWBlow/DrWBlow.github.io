@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baccarat Simulator</title>
+    <link rel="stylesheet" href="baccarat_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Baccarat <span class="badge">Sim</span></h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">Bankroll <button id="btn-edit-bankroll" class="btn-icon-small"
+                            title="Modifier la Bankroll">✏️</button></span>
+                    <span class="value" id="bankroll">$50'000'000</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Profit/Perte</span>
+                    <span class="value" id="profit-loss">$0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-info-bar">
+            <div class="shoe-indicator">
+                <div class="shoe-label">Sabot: <span id="shoe-count">0</span> / <span id="shoe-total">416</span></div>
+                <div class="shoe-progress-bg">
+                    <div class="shoe-progress-fill" id="shoe-bar" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="roadmaps-wrapper">
+            <div class="roadmap-label">Bead Plate</div>
+            <div class="roadmap-container">
+                <div class="roadmap" id="roadmap">
+                    <!-- Beads injected here -->
+                </div>
+            </div>
+
+            <div class="roadmap-label">Big Road</div>
+            <div class="roadmap-container big-road-container">
+                <div class="big-road" id="big-road">
+                    <!-- Big Road Columns injected here -->
+                </div>
+            </div>
+        </div>
+
+        <main class="game-board">
+            <div class="hands-area">
+                <div class="hand-section">
+                    <div class="hand-title">Player</div>
+                    <div class="cards-container" id="player-cards">
+                        <!-- Cards injected here -->
+                    </div>
+                    <div class="hand-score" id="player-score"></div>
+                </div>
+
+                <div class="hand-section">
+                    <div class="hand-title">Banker</div>
+                    <div class="cards-container" id="banker-cards">
+                        <!-- Cards injected here -->
+                    </div>
+                    <div class="hand-score" id="banker-score"></div>
+                </div>
+            </div>
+
+            <div class="message-area">
+                <div class="feedback-message" id="feedback-text">Placez vos jeux</div>
+            </div>
+
+            <div class="betting-area">
+                <div class="bet-options">
+                    <div class="bet-box" id="bet-player" data-type="player">
+                        <span class="bet-title">Player</span>
+                        <span class="bet-payout">1:1</span>
+                    </div>
+                    <div class="bet-box" id="bet-tie" data-type="tie">
+                        <span class="bet-title">Tie</span>
+                        <span class="bet-payout">8:1</span>
+                    </div>
+                    <div class="bet-box" id="bet-banker" data-type="banker">
+                        <span class="bet-title">Banker</span>
+                        <span class="bet-payout">1:1 (1:2 si 6)</span>
+                    </div>
+                </div>
+
+                <div class="bet-controls">
+                    <div class="input-group">
+                        <label for="bet-amount">Mise:</label>
+                        <input type="number" id="bet-amount" class="bet-input" value="10" min="1" max="10000">
+                        <button id="btn-clear-bet" class="btn-clear" title="Effacer la mise">✕</button>
+                    </div>
+                    <div class="chip-rack">
+                        <div class="chip chip-10" data-value="10">10</div>
+                        <div class="chip chip-25" data-value="25">25</div>
+                        <div class="chip chip-100" data-value="100">100</div>
+                        <div class="chip chip-500" data-value="500">500</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-area">
+                <button id="btn-deal" class="btn btn-primary" disabled>Distribuer</button>
+
+                <div class="simulation-controls">
+                    <div class="control-group">
+                        <span class="control-label">Vitesse:</span>
+                        <div class="speed-controls">
+                            <button class="btn-speed" data-speed="1000">Lent</button>
+                            <button class="btn-speed active" data-speed="200">Normal</button>
+                            <button class="btn-speed" data-speed="50">Rapide</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <button id="btn-auto" class="btn btn-secondary">Mode Auto</button>
+                        <button id="btn-sim-100" class="btn btn-secondary">Sim 100</button>
+                        <button id="btn-sim-1000" class="btn btn-secondary">Sim 1000</button>
+                        <button id="btn-reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+                <div id="sim-stats-display" class="sim-stats-display"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="baccarat_game.js"></script>
+</body>
+
+</html>
